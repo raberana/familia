@@ -15,9 +15,9 @@ import TodoScene from './scenes/TodoScene';
 import AuthLoadingScene from './scenes/AuthLoadingScene';
 import ColorStyle from './styles/ColorStyle';
 
-const AuthStack = createStackNavigator({ SignIn: SignInScene });
+const InitStack = createStackNavigator({ SignIn: SignInScene });
 
-const RootStack = createBottomTabNavigator(
+const MainStack = createBottomTabNavigator(
   {
     Home: HomeScene,
     Chat: ChatScene,
@@ -62,8 +62,8 @@ const RootStack = createBottomTabNavigator(
 const SwitchStack = createSwitchNavigator(
   {
     AuthLoading: AuthLoadingScene,
-    App: RootStack,
-    Auth: AuthStack
+    Main: MainStack,
+    Init: InitStack
   },
   {
     initialRouteName: 'AuthLoading'
@@ -88,13 +88,4 @@ export default class App extends React.Component {
       this.state.fontLoaded ? <SwitchStack /> : null
     );
   }
-
-  // render() {
-  //   return (
-  //     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-  //       <Text>{this.state.fontLoaded}</Text>
-  //       {/* {this.state.fontLoaded ? <SwitchStack /> : null} */}
-  //     </SafeAreaView>
-  //   );
-  // }
 }
