@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, Text, AsyncStorage, Button, StyleSheet } from 'react-native';
+import { NavigationActions, StackActions } from 'react-navigation';
 import ColorStyle from '../styles/ColorStyle';
 
 export default class SignInScene extends React.Component {
@@ -18,7 +19,19 @@ export default class SignInScene extends React.Component {
 
   _signInAsync = async () => {
     await AsyncStorage.setItem('userToken', 'abc');
-    this.props.navigation.navigate('Main');
+
+    // could be a call to an api
+    const families = await AsyncStorage.getItem('families');
+
+    if (families) {
+      this.props.navigation.navigate('Main');
+    } else {
+      const resetAction = StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: 'FamilyInit' })]
+      });
+      this.props.navigation.dispatch(resetAction);
+    }
   };
 }
 

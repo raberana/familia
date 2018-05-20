@@ -9,13 +9,27 @@ import {
 } from 'react-navigation';
 import HomeScene from './scenes/HomeScene';
 import ChatScene from './scenes/ChatScene';
+import FamilyInitScene from './scenes/FamilyInitScene';
+import FamilyInitCreateScene from './scenes/FamilyInitCreateScene';
+import FamilyInitJoinScene from './scenes/FamilyInitJoinScene';
 import SignInScene from './scenes/SignInScene';
 import ProfileScene from './scenes/ProfileScene';
 import TodoScene from './scenes/TodoScene';
 import AuthLoadingScene from './scenes/AuthLoadingScene';
 import ColorStyle from './styles/ColorStyle';
 
-const InitStack = createStackNavigator({ SignIn: SignInScene });
+const InitStack = createStackNavigator(
+  {
+    SignIn: SignInScene,
+    FamilyInit: FamilyInitScene,
+    FamilyInitCreate: FamilyInitCreateScene,
+    FamilyInitJoin: FamilyInitJoinScene
+  },
+  {
+    initialRouteName: 'SignIn',
+    header: null
+  }
+);
 
 const MainStack = createBottomTabNavigator(
   {
@@ -84,8 +98,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (
-      this.state.fontLoaded ? <SwitchStack /> : null
-    );
+    return this.state.fontLoaded ? <SwitchStack /> : null;
   }
 }
