@@ -16,7 +16,8 @@ export default class SignInScene extends React.Component {
             <Text style={styles.logoText}>familia</Text>
           </View>
           <View>
-            <Text style={styles.centerText}>Connect with your family anytime and anywhere.</Text>
+            <Text style={styles.centerText}>Connect with your family.</Text>
+            <Text style={styles.centerText}>Anytime and anywhere.</Text>
             <TouchableOpacity onPress={this._signInAsync}>
               <View style={styles.signUpBtn}>
                 <Text style={styles.signUpText}>GET STARTED</Text>
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
   signUpText: {
     color: ColorStyle.green,
     fontFamily: 'lato-regular',
-    fontSize: 20
+    fontSize: 17
   },
   logoText: {
     color: ColorStyle.white,
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
   centerText: {
     color: ColorStyle.white,
     fontFamily: 'lato-regular',
-    fontSize: 40
+    fontSize: 30
   },
   signIntext: {
     color: ColorStyle.white,
