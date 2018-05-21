@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, AsyncStorage, Button, StyleSheet } from 'react-native';
+import { SafeAreaView, View, Text, AsyncStorage, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
 import ColorStyle from '../styles/ColorStyle';
 
@@ -11,8 +11,24 @@ export default class SignInScene extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <Text style={styles.logoText}>familia</Text>
-        <Button title="Sign in!" onPress={this._signInAsync} />
+        <View style={styles.form}>
+          <View>
+            <Text style={styles.logoText}>familia</Text>
+          </View>
+          <View>
+            <Text style={styles.centerText}>Connect with your family anytime and anywhere.</Text>
+            <TouchableOpacity onPress={this._signInAsync}>
+              <View style={styles.signUpBtn}>
+                <Text style={styles.signUpText}>GET STARTED</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <Text onPress={this._signInAsync} style={styles.signIntext}>
+              Have an account already? LOG IN
+            </Text>
+          </View>
+        </View>
       </SafeAreaView>
     );
   }
@@ -42,9 +58,36 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: ColorStyle.green
   },
+  form: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: 40
+  },
+  signUpBtn: {
+    backgroundColor: ColorStyle.white,
+    alignItems: 'center',
+    padding: 10,
+    marginTop: 20
+  },
+  signUpText: {
+    color: ColorStyle.green,
+    fontFamily: 'lato-regular',
+    fontSize: 20
+  },
   logoText: {
     color: ColorStyle.white,
     fontFamily: 'pacifico-regular',
-    fontSize: 50
+    fontSize: 35
+  },
+  centerText: {
+    color: ColorStyle.white,
+    fontFamily: 'lato-regular',
+    fontSize: 40
+  },
+  signIntext: {
+    color: ColorStyle.white,
+    fontFamily: 'lato-regular',
+    fontSize: 17
   }
 });

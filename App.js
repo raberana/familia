@@ -91,7 +91,8 @@ export default class App extends React.Component {
 
   async componentDidMount() {
     await Font.loadAsync({
-      'pacifico-regular': require('./assets/fonts/Pacifico-Regular.ttf')
+      'pacifico-regular': require('./assets/fonts/Pacifico-Regular.ttf'),
+      'lato-regular': require('./assets/fonts/Lato-Regular.ttf'),
     });
 
     this.setState({ fontLoaded: true });
