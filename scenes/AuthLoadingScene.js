@@ -7,6 +7,7 @@ import {
   StyleSheet,
   AsyncStorage
 } from 'react-native';
+import ColorStyle from '../styles/ColorStyle';
 
 export default class AuthLoadingScene extends React.Component {
   constructor() {
@@ -19,7 +20,6 @@ export default class AuthLoadingScene extends React.Component {
     // plus get families
     this.props.navigation.navigate(userToken ? 'Main' : 'Init');
   };
-
 
   render() {
     return (
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: ColorStyle.green
   }
 });
