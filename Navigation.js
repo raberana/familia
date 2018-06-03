@@ -12,19 +12,21 @@ import FamilyInitScene from './scenes/FamilyInitScene';
 import FamilyInitCreateScene from './scenes/FamilyInitCreateScene';
 import FamilyInitJoinScene from './scenes/FamilyInitJoinScene';
 import SignInScene from './scenes/SignInScene';
+import StartScene from './scenes/StartScene';
 import ProfileScene from './scenes/ProfileScene';
 import TodoScene from './scenes/TodoScene';
 import AuthLoadingScene from './scenes/AuthLoadingScene';
 
 const InitStack = createStackNavigator(
   {
+    Start: StartScene,
     SignIn: SignInScene,
     FamilyInit: FamilyInitScene,
     FamilyInitCreate: FamilyInitCreateScene,
     FamilyInitJoin: FamilyInitJoinScene
   },
   {
-    initialRouteName: 'SignIn',
+    initialRouteName: 'Start',
     header: null
   }
 );
