@@ -5,14 +5,12 @@ import {
   View,
   Text,
   AsyncStorage,
-  TouchableOpacity,
   StyleSheet,
-  Button,
   TextInput
 } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
 import { FontAwesome } from '@expo/vector-icons';
-import { firestore as db } from '../firebase';
+import config from '../config';
 import ColorStyle from '../styles/ColorStyle';
 
 export default class SignInScene extends React.Component {
@@ -43,6 +41,29 @@ export default class SignInScene extends React.Component {
         actions: [NavigationActions.navigate({ routeName: 'FamilyInit' })]
       });
       this.props.navigation.dispatch(resetAction);
+    }
+  };
+
+  signInGoogleAsync = async () => {
+    const result = await Expo.Google.logInAsync({
+      androidClientId: config.androidClientId,
+      iosClientId: config.iosClientId,
+      scopes: ['profile', 'email']
+    });
+
+    if (result.type === 'success') {
+      return result.accessToken;
+    } else {
+      return { cancelled: true };
+    }
+
+    console.warn(token);
+    if (type === 'success') {
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+
+      console.warn(response);
+      this.signInAsync();
     }
   };
 
@@ -78,15 +99,16 @@ export default class SignInScene extends React.Component {
               <Text style={styles.btnText}>Sign in with email</Text>
             </FontAwesome.Button>
           </View>
+          <View style={styles.formContainer} />
           <View style={styles.btnContainer}>
             <FontAwesome.Button
-              name="facebook"
+              name="google"
               size={20}
-              backgroundColor={'#39579A'}
+              backgroundColor={'red'}
               color={ColorStyle.white}
-              onPress={this.signInAsync}
+              onPress={this.signInGoogleAsync}
             >
-              <Text style={styles.btnText}>Sign in with Facebook</Text>
+              <Text style={styles.btnText}>Sign in with Google</Text>
             </FontAwesome.Button>
           </View>
           <View style={styles.btnContainer}>
@@ -95,7 +117,7 @@ export default class SignInScene extends React.Component {
               size={20}
               backgroundColor={'red'}
               color={ColorStyle.white}
-              onPress={this.signInAsync}
+              onPress={this.signInGoogleAsync}
             >
               <Text style={styles.btnText}>Sign in with Google</Text>
             </FontAwesome.Button>
