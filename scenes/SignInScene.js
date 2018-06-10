@@ -44,6 +44,20 @@ export default class SignInScene extends React.Component {
     }
   };
 
+  signInFacebookAsync = async () => {
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
+      config.facebookAppId,
+      {
+        permissions: ['public_profile']
+      }
+    );
+    if (type === 'success') {
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+      this.signInAsync();
+    }
+  };
+
   signInGoogleAsync = async () => {
     const result = await Expo.Google.logInAsync({
       androidClientId: config.androidClientId,
@@ -52,17 +66,7 @@ export default class SignInScene extends React.Component {
     });
 
     if (result.type === 'success') {
-      return result.accessToken;
-    } else {
-      return { cancelled: true };
-    }
-
-    console.warn(token);
-    if (type === 'success') {
-      // Get the user's name using Facebook's Graph API
-      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-
-      console.warn(response);
+      // result.accessToken;
       this.signInAsync();
     }
   };
@@ -96,19 +100,19 @@ export default class SignInScene extends React.Component {
               color={ColorStyle.white}
               onPress={this.signInAsync}
             >
-              <Text style={styles.btnText}>Sign in with email</Text>
+              <Text style={styles.btnText}>SIGN IN WITH EMAIL</Text>
             </FontAwesome.Button>
           </View>
           <View style={styles.formContainer} />
           <View style={styles.btnContainer}>
             <FontAwesome.Button
-              name="google"
+              name="facebook"
               size={20}
-              backgroundColor={'red'}
+              backgroundColor={'#3C5A9A'}
               color={ColorStyle.white}
-              onPress={this.signInGoogleAsync}
+              onPress={this.signInFacebookAsync}
             >
-              <Text style={styles.btnText}>Sign in with Google</Text>
+              <Text style={styles.btnText}>SIGN IN WITH FACEBOOK</Text>
             </FontAwesome.Button>
           </View>
           <View style={styles.btnContainer}>
@@ -119,7 +123,7 @@ export default class SignInScene extends React.Component {
               color={ColorStyle.white}
               onPress={this.signInGoogleAsync}
             >
-              <Text style={styles.btnText}>Sign in with Google</Text>
+              <Text style={styles.btnText}>SIGN IN WITH GOOGLE</Text>
             </FontAwesome.Button>
           </View>
         </KeyboardAvoidingView>
