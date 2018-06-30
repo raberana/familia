@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, Button, AsyncStorage } from 'react-native';
 
-export default class FamilyInitScene extends React.Component {
+export default class FamilyInitComponent extends React.Component {
   static navigationOptions = {
     header: null,
   };

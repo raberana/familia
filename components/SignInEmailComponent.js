@@ -10,10 +10,11 @@ import {
 } from 'react-native';
 import { NavigationActions, StackActions } from 'react-navigation';
 import { FontAwesome } from '@expo/vector-icons';
+import { firebase } from '../firebase';
 import config from '../config';
 import ColorStyle from '../styles/ColorStyle';
 
-export default class SignInScene extends React.Component {
+export default class SignInEmailComponent extends React.Component {
   static navigationOptions = {
     header: null
   };
@@ -44,31 +45,9 @@ export default class SignInScene extends React.Component {
     }
   };
 
-  signInFacebookAsync = async () => {
-    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
-      config.facebookAppId,
-      {
-        permissions: ['public_profile']
-      }
-    );
-    if (type === 'success') {
-      // Get the user's name using Facebook's Graph API
-      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-      this.signInAsync();
-    }
-  };
+  signInEmailAsync = async () => {
 
-  signInGoogleAsync = async () => {
-    const result = await Expo.Google.logInAsync({
-      androidClientId: config.androidClientId,
-      iosClientId: config.iosClientId,
-      scopes: ['profile', 'email']
-    });
-
-    if (result.type === 'success') {
-      // result.accessToken;
-      this.signInAsync();
-    }
+    
   };
 
   render() {
@@ -82,14 +61,14 @@ export default class SignInScene extends React.Component {
             <TextInput
               style={styles.formText}
               placeholder="Email"
-              onChangeText={text => this.setState({ email })}
+              onChangeText={email => this.setState({ email })}
             />
           </View>
           <View style={styles.formContainer}>
             <TextInput
               style={styles.formText}
               placeholder="Password"
-              onChangeText={text => this.setState({ password })}
+              onChangeText={password => this.setState({ password })}
             />
           </View>
           <View style={styles.btnContainer}>
@@ -101,29 +80,6 @@ export default class SignInScene extends React.Component {
               onPress={this.signInAsync}
             >
               <Text style={styles.btnText}>SIGN IN WITH EMAIL</Text>
-            </FontAwesome.Button>
-          </View>
-          <View style={styles.formContainer} />
-          <View style={styles.btnContainer}>
-            <FontAwesome.Button
-              name="facebook"
-              size={20}
-              backgroundColor={'#3C5A9A'}
-              color={ColorStyle.white}
-              onPress={this.signInFacebookAsync}
-            >
-              <Text style={styles.btnText}>SIGN IN WITH FACEBOOK</Text>
-            </FontAwesome.Button>
-          </View>
-          <View style={styles.btnContainer}>
-            <FontAwesome.Button
-              name="google"
-              size={20}
-              backgroundColor={'red'}
-              color={ColorStyle.white}
-              onPress={this.signInGoogleAsync}
-            >
-              <Text style={styles.btnText}>SIGN IN WITH GOOGLE</Text>
             </FontAwesome.Button>
           </View>
         </KeyboardAvoidingView>

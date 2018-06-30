@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import ColorStyle from '../styles/ColorStyle';
 
-export default class AuthLoadingScene extends React.Component {
+export default class AuthLoadingComponent extends React.Component {
   constructor() {
     super();
     this._bootstrapAsync();

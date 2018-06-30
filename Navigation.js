@@ -6,24 +6,26 @@ import {
 } from 'react-navigation';
 import { Feather } from '@expo/vector-icons';
 import ColorStyle from './styles/ColorStyle';
-import HomeScene from './scenes/HomeScene';
-import ChatScene from './scenes/ChatScene';
-import FamilyInitScene from './scenes/FamilyInitScene';
-import FamilyInitCreateScene from './scenes/FamilyInitCreateScene';
-import FamilyInitJoinScene from './scenes/FamilyInitJoinScene';
-import SignInScene from './scenes/SignInScene';
-import StartScene from './scenes/StartScene';
-import ProfileScene from './scenes/ProfileScene';
-import TodoScene from './scenes/TodoScene';
-import AuthLoadingScene from './scenes/AuthLoadingScene';
+import HomeComponent from './components/HomeComponent';
+import ChatComponent from './components/ChatComponent';
+import FamilyInitComponent from './components/FamilyInitComponent';
+import FamilyInitCreateComponent from './components/FamilyInitCreateComponent';
+import FamilyInitJoinComponent from './components/FamilyInitJoinComponent';
+import SignInComponent from './components/SignInComponent';
+import SignInEmailComponent from './components/SignInEmailComponent';
+import StartComponent from './components/StartComponent';
+import ProfileComponent from './components/ProfileComponent';
+import TodoComponent from './components/TodoComponent';
+import AuthLoadingComponent from './components/AuthLoadingComponent';
 
 const InitStack = createStackNavigator(
   {
-    Start: StartScene,
-    SignIn: SignInScene,
-    FamilyInit: FamilyInitScene,
-    FamilyInitCreate: FamilyInitCreateScene,
-    FamilyInitJoin: FamilyInitJoinScene
+    Start: StartComponent,
+    SignIn: SignInComponent,
+    SignInEmail: SignInEmailComponent,
+    FamilyInit: FamilyInitComponent,
+    FamilyInitCreate: FamilyInitCreateComponent,
+    FamilyInitJoin: FamilyInitJoinComponent
   },
   {
     initialRouteName: 'Start',
@@ -33,10 +35,10 @@ const InitStack = createStackNavigator(
 
 const MainStack = createBottomTabNavigator(
   {
-    Home: HomeScene,
-    Chat: ChatScene,
-    Todo: TodoScene,
-    Profile: ProfileScene
+    Home: HomeComponent,
+    Chat: ChatComponent,
+    Todo: TodoComponent,
+    Profile: ProfileComponent
   },
   {
     initialRouteName: 'Home',
@@ -75,7 +77,7 @@ const MainStack = createBottomTabNavigator(
 
 export default (SwitchStack = createSwitchNavigator(
   {
-    AuthLoading: AuthLoadingScene,
+    AuthLoading: AuthLoadingComponent,
     Main: MainStack,
     Init: InitStack
   },

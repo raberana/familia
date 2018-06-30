@@ -13,7 +13,7 @@ import ColorStyle from '../styles/ColorStyle';
 
 import { firestore as db } from '../firebase';
 
-export default class StartScene extends React.Component {
+export default class StartComponent extends React.Component {
   static navigationOptions = {
     header: null
   };
@@ -39,7 +39,8 @@ export default class StartScene extends React.Component {
             </TouchableOpacity>
           </View>
           <View>
-            <Text style={styles.footer}>Terms and Conditions</Text>
+            <Text style={styles.footer}>Have an account already?</Text>
+            <Text style={[styles.footer, styles.footerSignIn]}>Sign in here</Text>
           </View>
         </View>
       </SafeAreaView>
@@ -88,5 +89,8 @@ const styles = StyleSheet.create({
     color: ColorStyle.white,
     fontFamily: 'lato-regular',
     fontSize: 15
+  },
+  footerSignIn: {
+    textDecorationLine: 'underline'
   }
 });

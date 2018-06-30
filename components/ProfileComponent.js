@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, AsyncStorage, Button } from 'react-native';
 
-export default class ProfileScene extends React.Component {
+export default class ProfileComponent extends React.Component {
   signOutAsync = async () => {
     await AsyncStorage.clear();
     this.props.navigation.navigate('Init');
