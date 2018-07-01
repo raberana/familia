@@ -21,7 +21,13 @@ export default class SignInComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '' };
+
+    this.state = {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      mode: props.navigation.getParam('mode', 'SIGNUP')
+    };
   }
 
   signInAsync = async () => {
@@ -81,6 +87,42 @@ export default class SignInComponent extends React.Component {
           <View style={{ alignItems: 'center' }}>
             <Text style={styles.logoText}>familia</Text>
           </View>
+          <View style={styles.formContainer}>
+            <TextInput
+              style={styles.formText}
+              placeholder="Email"
+              onChangeText={email => this.setState({ email })}
+            />
+          </View>
+          <View style={styles.formContainer}>
+            <TextInput
+              style={styles.formText}
+              placeholder="Password"
+              onChangeText={password => this.setState({ password })}
+            />
+          </View>
+          {this.state.mode == 'SIGNUP' && (
+            <View style={styles.formContainer}>
+              <TextInput
+                style={styles.formText}
+                placeholder="Confirm Password"
+                onChangeText={confirmPassword => this.setState({ confirmPassword })}
+              />
+            </View>
+          )}
+          <View style={styles.btnContainer}>
+            <FontAwesome.Button
+              name="envelope"
+              size={20}
+              backgroundColor={ColorStyle.green}
+              color={ColorStyle.white}
+              onPress={this.signInEmailAsync}
+            >
+              <Text style={styles.btnText}>
+                {this.state.mode == 'SIGNUP' ? 'SIGN UP' : 'SIGN IN'} WITH EMAIL
+              </Text>
+            </FontAwesome.Button>
+          </View>
           <View style={styles.btnContainer}>
             <FontAwesome.Button
               name="facebook"
@@ -101,28 +143,6 @@ export default class SignInComponent extends React.Component {
               onPress={this.signInGoogleAsync}
             >
               <Text style={styles.btnText}>Google</Text>
-            </FontAwesome.Button>
-          </View>
-          <View style={styles.btnContainer}>
-            <FontAwesome.Button
-              name="envelope"
-              size={20}
-              backgroundColor={ColorStyle.green}
-              color={ColorStyle.white}
-              onPress={this.signInAsync}
-            >
-              <Text style={styles.btnText}>Sign Up with Email</Text>
-            </FontAwesome.Button>
-          </View>
-          <View style={styles.btnContainer}>
-            <FontAwesome.Button
-              name="envelope"
-              size={20}
-              backgroundColor={ColorStyle.green}
-              color={ColorStyle.white}
-              onPress={this.signInAsync}
-            >
-              <Text style={styles.btnText}>SIGN IN WITH EMAIL</Text>
             </FontAwesome.Button>
           </View>
         </KeyboardAvoidingView>

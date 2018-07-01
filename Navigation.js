@@ -12,7 +12,6 @@ import FamilyInitComponent from './components/FamilyInitComponent';
 import FamilyInitCreateComponent from './components/FamilyInitCreateComponent';
 import FamilyInitJoinComponent from './components/FamilyInitJoinComponent';
 import SignInComponent from './components/SignInComponent';
-import SignInEmailComponent from './components/SignInEmailComponent';
 import StartComponent from './components/StartComponent';
 import ProfileComponent from './components/ProfileComponent';
 import TodoComponent from './components/TodoComponent';
@@ -22,7 +21,6 @@ const InitStack = createStackNavigator(
   {
     Start: StartComponent,
     SignIn: SignInComponent,
-    SignInEmail: SignInEmailComponent,
     FamilyInit: FamilyInitComponent,
     FamilyInitCreate: FamilyInitCreateComponent,
     FamilyInitJoin: FamilyInitJoinComponent

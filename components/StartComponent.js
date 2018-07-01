@@ -18,8 +18,8 @@ export default class StartComponent extends React.Component {
     header: null
   };
 
-  getStarted = async () => {
-    this.props.navigation.navigate('SignIn');
+  enter = async mode => {
+    this.props.navigation.navigate('SignIn', { mode: mode });
   };
 
   render() {
@@ -32,15 +32,25 @@ export default class StartComponent extends React.Component {
           <View>
             <Text style={styles.centerText}>Connect with your family.</Text>
             <Text style={styles.centerText}>Anytime and anywhere.</Text>
-            <TouchableOpacity onPress={this.getStarted}>
+            <TouchableOpacity
+              onPress={() => {
+                this.enter('SIGNUP');
+              }}
+            >
               <View style={styles.getStartedBtn}>
                 <Text style={styles.getStartedText}>GET STARTED</Text>
               </View>
             </TouchableOpacity>
           </View>
           <View>
-            <Text style={styles.footer}>Have an account already?</Text>
-            <Text style={[styles.footer, styles.footerSignIn]}>Sign in here</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.enter('SIGNIN');
+              }}
+            >
+              <Text style={styles.footer}>Have an account already?</Text>
+              <Text style={[styles.footer, styles.footerSignIn]}>Sign in here</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </SafeAreaView>
