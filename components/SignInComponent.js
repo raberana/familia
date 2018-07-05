@@ -51,7 +51,9 @@ export default class SignInComponent extends React.Component {
     }
   };
 
-  signInEmailAsync = async () => {};
+  signInEmailAsync = async () => {
+    this.signInAsync();
+  };
 
   signInFacebookAsync = async () => {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
