@@ -24,7 +24,7 @@ export default class AuthLoadingComponent extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <ActivityIndicator />
+        <ActivityIndicator color="white"/>
         <StatusBar barStyle="default" />
       </SafeAreaView>
     );

@@ -114,6 +114,7 @@ export default class SignInComponent extends React.Component {
             <FontAwesome.Button
               name="envelope"
               size={20}
+              borderRadius={20}
               backgroundColor={ColorStyle.green}
               color={ColorStyle.white}
               onPress={this.signInEmailAsync}
@@ -127,22 +128,24 @@ export default class SignInComponent extends React.Component {
             <FontAwesome.Button
               name="facebook"
               size={20}
+              borderRadius={20}
               backgroundColor={'#3C5A9A'}
               color={ColorStyle.white}
               onPress={this.signInFacebookAsync}
             >
-              <Text style={styles.btnText}>Facebook</Text>
+              <Text style={styles.btnText}>FACEBOOK</Text>
             </FontAwesome.Button>
           </View>
           <View style={styles.btnContainer}>
             <FontAwesome.Button
               name="google"
               size={20}
+              borderRadius={20}
               backgroundColor={'red'}
               color={ColorStyle.white}
               onPress={this.signInGoogleAsync}
             >
-              <Text style={styles.btnText}>Google</Text>
+              <Text style={styles.btnText}>GOOGLE</Text>
             </FontAwesome.Button>
           </View>
         </KeyboardAvoidingView>
@@ -168,22 +171,23 @@ const styles = StyleSheet.create({
     fontFamily: 'pacifico-regular',
     fontSize: 35
   },
-  formText: {
-    height: 30,
-    fontSize: 20
-  },
-  btnText: {
-    fontFamily: 'lato-regular',
-    color: ColorStyle.white,
-    alignItems: 'center',
-    fontSize: 18
-  },
   formContainer: {
     margin: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E6ECEF'
+    borderRadius: 5,
+    padding: 7,
+    backgroundColor: '#E6ECEF'
+  },
+  formText: {
+    height: 25,
+    fontSize: 18
   },
   btnContainer: {
     margin: 10
+  },
+  btnText: {
+    fontFamily: 'roboto-regular',
+    color: ColorStyle.white,
+    alignItems: 'center',
+    fontSize: 15
   }
 });

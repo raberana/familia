@@ -49,7 +49,7 @@ export default class StartComponent extends React.Component {
               }}
             >
               <Text style={styles.footer}>Have an account already?</Text>
-              <Text style={[styles.footer, styles.footerSignIn]}>Sign in here</Text>
+              <Text style={[styles.footer, styles.footerSignIn]}>SIGN IN HERE</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   getStartedText: {
     color: ColorStyle.white,
-    fontFamily: 'lato-regular',
+    fontFamily: 'roboto-regular',
     fontSize: 17
   },
   logoText: {
@@ -92,15 +92,15 @@ const styles = StyleSheet.create({
   },
   centerText: {
     color: ColorStyle.white,
-    fontFamily: 'lato-regular',
+    fontFamily: 'roboto-regular',
     fontSize: 30
   },
   footer: {
     color: ColorStyle.white,
-    fontFamily: 'lato-regular',
+    fontFamily: 'roboto-regular',
     fontSize: 15
   },
   footerSignIn: {
-    textDecorationLine: 'underline'
+    fontFamily: 'roboto-bold',
   }
 });
